@@ -15,3 +15,9 @@ class Db:
         post = {'sl':self.current_update_id,'temp':temp,'TS':str(datetime.datetime.now())}
         self.posts.insert(post)
         self.current_update_id += 1
+
+    def getValues(self):
+        ret = []
+        for p in self.posts.find():
+            ret.append((p['TS'],p['temp']))
+        return ret
