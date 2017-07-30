@@ -12,5 +12,6 @@ class Db:
         self.current_update_id = [p['sl'] for p in self.posts.find()][-1] + 1
 
     def update_temperature(self,temp):
-        post = {'sl':self.current_update_id,'temp':temp,'TS':datetime.datetime.now()}
+        post = {'sl':self.current_update_id,'temp':temp,'TS':str(datetime.datetime.now())}
         self.posts.insert(post)
+        self.current_update_id += 1

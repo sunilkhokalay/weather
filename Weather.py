@@ -13,13 +13,7 @@ class Weather(object):
         handle = request.urlopen(self.url)
         soup = BeautifulSoup(handle,"html.parser")
         current_temp = soup.findAll("span", {"class": "deg-feels"})[0]
-        return current_temp.text
-
-w = Weather()
-t = w.getTemp()
-print(t)
-
-
+        return int((current_temp.text)[:-1])
 
 
 
